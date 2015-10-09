@@ -70,6 +70,10 @@ func (j *Js) Getdata() map[string]interface{} {
 func (j *Js) Getindex(i int) *Js {
 	prev = j
 	num := i //- 1
+	if i > len((j.data).([]interface{}))-1 {
+		j.data = errors.New("index out of range list").Error()
+		return j
+	}
 	if m, ok := (j.data).([]interface{}); ok {
 		v := m[num]
 		j.data = v
@@ -108,7 +112,7 @@ func (j *Js) Getindex(i int) *Js {
 func (j *Js) Arrayindex(i int) string {
 	prev = j
 	num := i //- 1
-	if i > len((j.data).([]interface{})) {
+	if i > len((j.data).([]interface{}))-1 {
 		data := errors.New("index out of range list").Error()
 		return data
 	}
@@ -136,7 +140,7 @@ func (j *Js) Arrayindex(i int) string {
 func (j *Js) Getkey(key string, i int) *Js {
 	prev = j
 	num := i //- 1
-	if i > len((j.data).([]interface{})) {
+	if i > len((j.data).([]interface{}))-1 {
 		j.data = errors.New("index out of range list").Error()
 		return j
 	}

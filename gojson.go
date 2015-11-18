@@ -68,7 +68,7 @@ func (j *Js) Getdata() map[string]interface{} {
 }
 
 func (j *Js) Count() int {
-	return len((j.data).(map[string]interface{}))
+	return len((j.data).([]interface{}))
 }
 
 func (j *Js) Getindex(i int) *Js {

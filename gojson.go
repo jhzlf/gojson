@@ -68,6 +68,9 @@ func (j *Js) Getdata() map[string]interface{} {
 }
 
 func (j *Js) Count() int {
+	if j.data == nil {
+		return 0
+	}
 	return len((j.data).([]interface{}))
 }
 
